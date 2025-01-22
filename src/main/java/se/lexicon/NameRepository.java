@@ -154,9 +154,19 @@ public class NameRepository {
      * @return True if the name is removed successfully; false if the name is not found in the array.
      */
     public static boolean remove(final String fullName) {
-        //todo: PART 4: implement remove method
-        return false;
+        if (find(fullName) == null){
+            return false;
+        } else {
+            String[] newNames = new String[names.length - 1];
+            int index = 0;
+            for (String name : names) {
+                if (!name.equals(fullName)) {
+                    newNames[index] = name;
+                    index++;
+                }
+            }
+            names = newNames;
+            return true;
+        }
     }
-
-
 }
