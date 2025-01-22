@@ -1,6 +1,8 @@
 package se.lexicon;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * The NameRepository class provides methods to manage a list of names.
@@ -96,8 +98,13 @@ public class NameRepository {
      * @return An array containing all matching names.
      */
     public static String[] findByFirstName(final String firstName) {
-        //todo: PART 3: findByFirstName method
-        return null;
+        List<String> foundNames = new ArrayList<>();
+        for(String name : names) {
+            if (name.split(" ")[0].equals(firstName)) {
+                foundNames.add(name);
+            }
+        }
+        return foundNames.toArray(new String[0]);
     }
 
 
@@ -108,8 +115,13 @@ public class NameRepository {
      * @return An array containing all matching names.
      */
     public static String[] findByLastName(final String lastName) {
-        //todo: PART 3: implement findByLastName method
-        return null;
+        List<String> foundNames = new ArrayList<>();
+        for(String name : names) {
+            if (name.split(" ")[1].equals(lastName)) {
+                foundNames.add(name);
+            }
+        }
+        return foundNames.toArray(new String[0]);
     }
 
 
@@ -121,8 +133,17 @@ public class NameRepository {
      * @return True if the name is updated successfully; false if the updated name already exists or the original name is not found.
      */
     public static boolean update(final String original, final String updatedName) {
-        //todo: PART 3: implement update method
-        return false;
+        if (find(updatedName) == updatedName || find(original) == null) {
+            return false;
+        } else {
+            //find index of original name and update
+            for (int i = 0; i < names.length; i++) {
+                if (names[i].equals(original)) {
+                    names[i] = updatedName;
+                }
+            }
+            return true;
+        }
     }
 
 
