@@ -15,8 +15,7 @@ public class NameRepository {
      * @return The number of elements in the names array.
      */
     public static int getSize() {
-        //todo: PART 1: implement getSize method
-        return 0;
+        return names.length;
     }
 
 
@@ -26,7 +25,11 @@ public class NameRepository {
      * @param names The array of names to set.
      */
     public static void setNames(final String[] names) {
-        //todo: PART 1: implement setNames method
+        if (names == null) {
+            NameRepository.names = new String[0];
+        } else {
+            NameRepository.names = names.clone();
+        }
     }
 
 
@@ -34,7 +37,7 @@ public class NameRepository {
      * Clears the names array by creating a new empty array.
      */
     public static void clear() {
-        //todo: PART 1: implement clear method
+        NameRepository.names = new String[0];
     }
 
 
@@ -44,8 +47,7 @@ public class NameRepository {
      * @return A new array containing all elements from the names array.
      */
     public static String[] findAll() {
-        //todo: PART 1: implement findAll method
-        return null;
+        return NameRepository.names.clone();
     }
 
 
